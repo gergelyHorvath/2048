@@ -7,18 +7,18 @@ def move(list):
     for i in range(N):
         for j in range(N):
             for doittwice in [0, 1]:
-                counter = 0
-                while list[i * N + j] == "":
+                counter = j
+                while list[i * N + j] == 0:
                     if counter == N - 1:
                         break
                     for k in range(j, N-1):
                         list[i * N + k] = list[i * N + k + 1]
-                    list[i * N + N - 1] = ""
+                    list[i * N + N - 1] = 0
                     counter += 1
-                if (j > 0) and (list[i * N + j] != "") and (doittwice == 0):
+                if (j > 0) and (list[i * N + j] != 0) and (doittwice == 0):
                     if list[i * N + j] == list[i * N + j - 1]:
-                        list[i * N + j - 1] = str(int(list[i * N + j]) + int(list[i * N + j - 1]))
-                        list[i * N + j] = ""
+                        list[i * N + j - 1] = list[i * N + j] + list[i * N + j - 1]
+                        list[i * N + j] = 0
     a_valid_move = 1
     if list == dummylist:
         a_valid_move = 0

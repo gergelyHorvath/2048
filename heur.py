@@ -3,13 +3,6 @@ import copy
 import math
 
 
-def numtable(table):
-    nums = []
-    for i in table:
-        nums.append(0 if i == '' else int(i))
-    return nums
-
-
 def heuristicsrows(table):
     length = int(len(table) ** 0.5)
     scorerows = []
@@ -43,19 +36,4 @@ def heurhomog(table):
 
 
 def heur(table):
-    nums = numtable(table)
-    return (heuristicsrows(nums) + heuristicscols(nums)) * 10 + heurhomog(nums)
-
-
-# a_table = [2, 2, 4, 4, 8, 4, 8, 2, 2, 16, 16, 32, 128, 2, 256, 1024]
-
-# print(heuristicsrows(a_table))
-# print(heuristicscols(a_table))
-# print(heurhomog(a_table))
-
-
-       
-
-
-
-
+    return (heuristicsrows(table) + heuristicscols(table)) * 10 + heurhomog(table)

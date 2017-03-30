@@ -2,16 +2,23 @@ import random, draw, move, invert, highscores, copy
 import recur
 
 
+def strtable(table):
+    nums = []
+    for i in table:
+        nums.append("" if i == 0 else str(i))
+    return nums
+
+
 def randomplace(list):
     freeloc = []
     for i, j in enumerate(list):
-        if j == "":
+        if j == 0:
             freeloc.append(i)
     randidx = random.choice(freeloc)
     if random.randint(1, 10) > 9:
-        list[randidx] = "4"
+        list[randidx] = 4
     else:
-        list[randidx] = "2"
+        list[randidx] = 2
 
 
 def possib_dir(table):
@@ -30,6 +37,7 @@ def possib_dir(table):
         directions["d"] = table_right
     return directions
 
+
 def main():
     usr = input("Enter your name:")
     if usr == "":
@@ -42,21 +50,21 @@ def main():
     except ValueError:
         size = 4
     moves = 0
-    table = ["" for i in range(size ** 2)]
+    table = [0 for i in range(size ** 2)]
     randomplace(table)
     while True:
         print("\n" * 100)
         for i in range(1):
             randomplace(table)
-        draw.drawagrid(table)
+        draw.drawagrid(strtable(table))
         directions = possib_dir(table)
 
         if len(directions) == 0:
             print("Game Over!")
-            highscores.hsc(table, usr, moves, size)
+            highscores.hsc(strtable(table), usr, moves, size)
             quit()
         if usr == 'AI':
-            dirinput = recur.opt_move(table)
+            dirinput = recur.opt_move(table)[0]
         else:
             dirinput = input("Enter a possible direction ({0}):".format(", ".join(list(directions.keys()))))
             while dirinput not in directions:

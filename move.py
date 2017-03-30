@@ -1,3 +1,8 @@
+"""
+Theese functions, along with the ones in the invert module are
+responsible for game tile movement.
+"""
+
 import invert, copy
 
 

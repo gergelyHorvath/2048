@@ -1,3 +1,9 @@
+"""
+The heuristics of the AI.
+The AI prefers tables with as few monotonity changes as possible
+and a board with low deviation.
+"""
+
 import invert
 import copy
 import math
@@ -36,4 +42,7 @@ def heurhomog(table):
 
 
 def heur(table):
-    return (heuristicsrows(table) + heuristicscols(table)) * 10 + heurhomog(table)
+    multi = 1
+    if max(table) > 512:
+        multi = 0
+    return (heuristicsrows(table) + heuristicscols(table)) * 10 + multi * heurhomog(table)

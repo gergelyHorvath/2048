@@ -1,4 +1,10 @@
+
+
 def hsc(list, usr, moves, size):
+    """
+    Handles the game when Game Over conditions are met.
+    Exports, imports high scores.
+    """
     highestelement = 0
     for i in list:
         if int(i) > highestelement:

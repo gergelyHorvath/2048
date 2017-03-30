@@ -1,3 +1,9 @@
+"""
+Theese functions, along with the ones in the move module are
+responsible for game tile movement.
+"""
+
+
 def invert_vert(list):
     N = int(len(list) ** 0.5)
     slices = [list[(i * N):(i * N + N)] for i in range(N)]

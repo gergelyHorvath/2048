@@ -1,4 +1,4 @@
-import random, draw, move, invert, highscores, copy
+import random, copy, draw, move, invert, highscores
 import recur
 
 
@@ -63,8 +63,10 @@ def main():
             print("Game Over!")
             highscores.hsc(strtable(table), usr, moves, size)
             quit()
+
         if usr == 'AI':
             dirinput = recur.opt_move(table)[0]
+
         else:
             dirinput = input("Enter a possible direction ({0}):".format(", ".join(list(directions.keys()))))
             while dirinput not in directions:

@@ -5,6 +5,11 @@ from main import possib_dir
 
 
 def gen_poss_tabs(table):
+    """
+    In 2048 you either get a 2 or a 4 each move.
+    This function creates a dictionary that contains all possible
+    game states based on this rule, and their probability.
+    """
     freeloc = []
     for i, j in enumerate(table):
         if j == 0:
@@ -23,6 +28,11 @@ def gen_poss_tabs(table):
 
 
 def opt_move(table, depth=1):
+    """
+    The main decision making function of the AI.
+    Evaluates moves based on possible game states 'depth'
+    moves in the future.
+    """
     directions = possib_dir(table)
     if len(directions) == 0:
         return [[], 10 ** 6]

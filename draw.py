@@ -1,4 +1,8 @@
 def drawagrid(list):
+    """
+    The display function of the game.
+    Inserts the elements of a list into a square shaped table.
+    """
     N = int(len(list) ** 0.5)
     space = " "
     thisrow = "┌"
